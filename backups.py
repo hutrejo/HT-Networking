@@ -8,8 +8,10 @@ import datetime
 now = datetime.datetime.now()
 user = 'hugo'
 password = 'hugo'
-#enable_password = input("Enter enable pswd:")
+
 port=22
+
+##Aqui deben usar el directorio donde esta su txt
 f0 = open("c:\\Users\\hitg8\\OneDrive\\Documents\\Python\\listaips.txt")
 for ip in f0.readlines():
        ip = ip.strip()
