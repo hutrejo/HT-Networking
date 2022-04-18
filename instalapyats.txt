@@ -1,0 +1,56 @@
+Como instalar pyATS
+
+1 Instalar el full packet
+
+$ pip install “pyats[full]”
+
+ Crea un entorno virtual(es recomendado)
+
+
+2 Crea un nuevo directorio
+
+$ mkdir pyats 
+
+3 Entra
+
+$ cd pyats
+
+4 Inicia aqui el entorno virtual
+
+$ python3 -m venv .
+
+
+Activalo
+
+$ source bin/activate .
+
+Debes ver como ya estas dentro
+
+(pyats) hugo@ubuntu:~/pyats$ 
+
+Ahora puedes installar el pyATS aqui
+
+pip install “pyats[full]”
+
+
+checa la version y listo 
+
+pyats version check
+
+
+############################################
+
+Con este comando creas un yml con los host de manera interactiva, aunque puedes crearlos manual
+
+genie create testbed interactive --output testbed3.yml
+
+##############################################
+
+Con este comando hacer el learn de ospf 
+
+genie learn ospf --testbed-file testbed1.yml --output ospf5
+
+##########################################
+
+con este  comparas
+pyats diff ospf5 ospf6
