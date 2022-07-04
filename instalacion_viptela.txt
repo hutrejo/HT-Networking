@@ -1,0 +1,97 @@
+Si ya tienes instalado el eve-ng en tu maquina los pasos son los siguientes
+Necesitas antes que nada descargar las 3 imagenes necesarias de la pagina de cisco, necesitas una cuenta o pedir a alguien que tenga una que las baje por ti
+
+###Si tienes problemas puedes mandarme mensaje y puedo pasartelas
+
+viptela-vmanage-19.3.0-genericx86-64.qcow2
+viptela-smart-19.3.0-genericx86-64.qcow2
+viptela-edge-19.3.0-genericx86-64.qcow2
+
+
+
+##########################################
+
+- Primero necesitamos crear los directorios de las imagenes en el sigueiente path:
+
+
+/opt/unetlab/addons/qemu/
+
+- Usamos el siguiente comando para acceder a la carpeta:
+
+cd /opt/unetlab/addons/qemu/
+
+- Creamos los folders (el nombre puede cambiar dependiendo de la version, pero debe ser la misma version para los directorios):
+
+mkdir /opt/unetlab/addons/qemu/vtbond-19.3.0
+mkdir /opt/unetlab/addons/qemu/vtedge-19.3.0
+mkdir /opt/unetlab/addons/qemu/vtsmart-19.3.0
+mkdir /opt/unetlab/addons/qemu/vtmgmt-19.3.0
+
+- Usando algun programa transfieres las imagenes a las respectivas carpetas, yo uso winscp , LA IMAGEN DEL VBOND SERA LA MISMA DEL VEDGE
+
+- Si todo salio bien al final debes ver algo similar a esto:
+
+# ls -lR /opt/unetlab/addons/qemu
+/opt/unetlab/addons/qemu:
+total 16
+drwxr-xr-x 2 root root 4096 Jul 15 16:47 vtbond-19.3.0
+drwxr-xr-x 2 root root 4096 Jul 15 16:46 vtedge-19.3.0
+drwxr-xr-x 2 root root 4096 Jul 15 16:47 vtmgmt-19.3.0
+drwxr-xr-x 2 root root 4096 Jul 15 16:47 vtsmart-19.3.0
+
+/opt/unetlab/addons/qemu/vtbond-19.3.0:
+total 241284
+-rw-r--r-- 1 root root 247070720 Feb 20  2020 viptela-edge-19.3.0-genericx86-64.qcow2
+
+/opt/unetlab/addons/qemu/vtedge-19.3.0:
+total 241284
+-rw-r--r-- 1 root root 247070720 Feb 20  2020 viptela-edge-19.3.0-genericx86-64.qcow2
+
+/opt/unetlab/addons/qemu/vtmgmt-19.3.0:
+total 1084676
+-rw-r--r-- 1 root root 1110704128 Feb 20  2020 viptela-vmanage-19.3.0-genericx86-64.qcow2
+
+/opt/unetlab/addons/qemu/vtsmart-19.3.0:
+total 241280
+-rw-r--r-- 1 root root 247070720 Feb 20  2020 viptela-smart-19.3.0-genericx86-64.qcow2
+
+
+- Ahora hay que renombrar cada imagen de la sig manera(usamos el comando mv):
+
+# cd /opt/unetlab/addons/qemu/vtbond-19.3.0/
+# mv viptela-edge-19.3.0-genericx86-64.qcow2 virtioa.qcow2
+The vEdge image:
+
+# cd /opt/unetlab/addons/qemu/vtedge-19.3.0/
+# mv viptela-edge-19.3.0-genericx86-64.qcow2 virtioa.qcow2
+vSmart image:
+
+# cd /opt/unetlab/addons/qemu/vtsmart-19.3.0/
+# mv viptela-smart-19.3.0-genericx86-64.qcow2 virtioa.qcow2
+And the vManage image:
+
+# cd /opt/unetlab/addons/qemu/vtmgmt-19.3.0/
+# mv viptela-vmanage-19.3.0-genericx86-64.qcow2 virtioa.qcow2
+
+
+- Para el vmanage es necesario un paso extra, darle 100G a la imagen:
+
+/opt/qemu/bin/qemu-img create -f qcow2 virtiob.qcow2 100G
+
+- Por ultimo se dan los permisos necesarios como cada imagen que agregamos a eve-ng
+
+/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
