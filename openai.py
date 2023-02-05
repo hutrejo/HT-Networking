@@ -4,7 +4,7 @@ import time
 import speech_recognition as sr
  
 
-ai.api_key = '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'
+ai.api_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 def generate_gpt3_response(user_text, print_output=False):
     completions = ai.Completion.create(
